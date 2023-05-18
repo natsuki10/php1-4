@@ -26,7 +26,7 @@
 
         switch($player_hand) {
             case 'rock':
-                if($pc_hand == 'paper') {
+                if($pc_hand == 'scissors') {
                     $result = '勝ち';   
                 } elseif ($pc_hand == 'paper') {
 					$result = '負け';
