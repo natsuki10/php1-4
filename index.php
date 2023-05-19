@@ -18,35 +18,35 @@
         <input type="submit" name="submit" value="じゃんけん！">
     </form>
     <?php
-    $hands = array ('rock', 'scissors', 'paper');
-    $pc_hand = $hands[rand(0,2)];
+    $hands = array('rock' => 'rock', 'scissors' => 'scissors', 'paper' => 'paper');
+    $pc_hand = $hands[array_rand($hands)];
 
     if(isset($_POST['submit'])) {
         $player_hand = $_POST['player_hand'];
 
         switch($player_hand) {
             case 'rock':
-                if($pc_hand == 'scissors') {
+                if($pc_hand === $hands['scissors']) {
                     $result = '勝ち';   
-                } elseif ($pc_hand == 'paper') {
+                } elseif ($pc_hand === $hands['paper']) {
 					$result = '負け';
 				} else {
 					$result = 'あいこ';
 				}
 				break;
             case 'scissors':
-                if ($pc_hand == 'paper') {
+                if ($pc_hand === $hands['paper']) {
                     $result = '勝ち';
-                } elseif ($pc_hand == 'rock') {
+                } elseif ($pc_hand === $hands['rock']) {
                     $result = '負け';
                 } else {
                     $result = 'あいこ';
                  }
                 break;
             case 'paper':
-                if ($pc_hand == 'rock') {
+                if ($pc_hand === $hands['rock']) {
                     $result = '勝ち';
-                } elseif ($pc_hand == 'scissors') {
+                } elseif ($pc_hand === $hands['scissors']) {
                     $result = '負け';
                 } else {
                     $result = 'あいこ';
@@ -54,7 +54,7 @@
                 break;
             default:
 				$result = '';
-				break;     
+			    break;     
         }
         echo '<p>自分：';
             switch ($player_hand) {
